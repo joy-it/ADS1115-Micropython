@@ -9,7 +9,8 @@ As long as the raw value and voltages still change depending on what is/will be 
 ## Behaviour considered to be a fail
 As soon as the output values no longer change. This is considered a failure, since the functionality is basically no longer given and no "real" value can be read.
 
-## ADS1115 possible address'
+## ADS1115 possible addresses
+
 | Pin         | Address        |
 | ----------- | -------------- |
 | ADDR to GND | 0x48 (default) |
