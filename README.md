@@ -1,6 +1,6 @@
 # Micropython Package for the ADS1115
 
-This library provides a Micropython package for the ADS1115.
+This library provides a Raspberry Pi Pico based Micropython package for the ADS1115..
 See **https://joy-it.net/en/products/COM-KY053ADC** for more details.
 
 ## Behaviour considered to be a pass
