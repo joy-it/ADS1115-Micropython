@@ -115,7 +115,7 @@ _RATES = [
 i2c = I2C(0, sda = Pin(0), scl = Pin(1), freq = 100000)
 utime.sleep_ms(10)
 
-# All global variables used in the library, as well as some predefined variables that serve as default values
+# All global variables used in the library, as well as some predefined variables that serve as default values.
 adsaddress = 0x48
 adsgain = _GAINS[2]
 adsrate = _RATES[4]
@@ -123,7 +123,7 @@ adsmode = _MODE_CONTIN
 adsgainv = 2
 temp2 = bytearray(2)
 
-# 
+# Initialization of the ADS based on user input.
 def init(adr, gain, rate, mode):
     global adsaddress
     adsaddress = adr
@@ -131,19 +131,19 @@ def init(adr, gain, rate, mode):
     setRate(rate)
     setMode(mode)
 
-# Change the gains based on the user input
+# Change the gains based on the user input.
 def setGain(gain):
     global adsgain
     global adsgainv
     adsgain = _GAINS[gain]
     adsgainv = gain
 
-# Change the sample rate based on user input
+# Change the sampling rate based on user input.
 def setRate(rate):
     global adsrate
     adsrate = _RATES[rate]
 
-# Change the mode based on user input
+# Change the mode based on user input.
 def setMode(mode = True):
     global adsmode
     if (mode):
@@ -151,33 +151,33 @@ def setMode(mode = True):
     else:
         adsmode = _MODE_CONTIN
 
-# Write the required 16-bit value into the register
+# Write the desired 16-bit value into the register.
 def _write_register(reg, val):
     temp2[0] = val >> 8
     temp2[1] = val & 0xff
     i2c.writeto_mem(adsaddress, reg, temp2)
 
-# Read the 16-bit register value that will be returned
+# Read the 16-bit register value to be returned.
 def _read_register(reg):
     i2c.readfrom_mem_into(adsaddress, reg, temp2)
     return (temp2[0] << 8) | temp2[1]
 
-# Reads any raw value (raw) either from the previously specified channel or from any other variable and converts it to voltages
+# Reads any raw value (raw) either from the previously specified channel or from another variable and converts it to voltages.
 def raw_to_v(raw):
     v_p_b = _GAINS_V[adsgainv] / 32767
     return round(raw * v_p_b, 2)
 
 
-# Reads the specified channel of the ADS1115
+# Reads the specified channel of the ADS1115.
 def read(chan):
-    # Linking of all required data by the bitwise 'OR ('|')' operator.
+    # Linking of all required data by the bitwise operator 'OR ('|')'.
     config = 0x0000
     config |= _CHANNELS[chan]
     config |= adsgain
     config |= adsrate
     config |= adsmode
     config |= _CQUE_NONE
-    # Sending the required data to the specified register.
+    # Send the required data to the specified register.
     _write_register(_REGISTER_CONFIG, config)
     while not _read_register(_REGISTER_CONFIG) & _OS_NOTBUSY:
         break
