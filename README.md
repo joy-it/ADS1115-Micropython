@@ -19,7 +19,7 @@ You can use the `init(...)` function to initialize the ADS with the given parame
 # The parameter rate allows you to change the number of measurements that the ADS1115 should perform in one second
 # The parameter mode allows you to change how the ADS performs its measurments
 # Standard initialization with address 0x48, gain 2, rate 4 and mode False
- ADS1115.init(0x48, 1, 4, False)
+ADS1115.init(0x48, 1, 4, False)
 ```
 
 ## setGain
@@ -35,7 +35,7 @@ You can use the `setGain(...)` function to change the value used in measurements
 # + /-0.512V range  =  Gain 8
 # + /-0.256V range  =  Gain 16
 # Standard call of function with value 2
-# ADS1115.setGain(2)
+ADS1115.setGain(2)
 ```
 
 ## setRate
@@ -53,7 +53,7 @@ You can use the `setRate(...)` function to change the number of measurements tha
 # _DR_3300SPS    475 samples per second
 # _DR_860SPS     860 samples per Second
 # Standard call of function with value 4
-# ADS1115.setRate(4)
+ADS1115.setRate(4)
 ```
 
 ## setMode
@@ -65,7 +65,7 @@ You can use the `setMode(...)` function to change how the ADS performs its measu
 # mode = True -> Single measurment
 # mode = False -> Continous measurments
 # Standard call of function with value False
-# ADS1115.setMode(False)
+ADS1115.setMode(False)
 ```
 
 ## Converting Raw Values to Voltages
