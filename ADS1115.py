@@ -188,3 +188,28 @@ def read(chan):
     else:
         res = res - 65469
         return res
+    
+# Reading multiple ADS1115 channels at once
+def readMulti(start, end):
+    res1 = 0
+    res2 = 0
+    res3 = 0
+    res4 = 0
+    if (start > 4): start = 4
+    if (start < 0): start = 0
+    if (end > 4): end = 4
+    if (end < 0): end = 0
+    for x in range (start, end):
+        if (x == 0):
+            res1 = read(x)
+            utime.sleep_ms(25)
+        if (x == 1):
+            res2 = read(x)
+            utime.sleep_ms(25)
+        if (x == 2):
+            res3 = read(x)
+            utime.sleep_ms(25)
+        if (x == 3):
+            res4 = read(x)
+            utime.sleep_ms(25)
+    return res1, res2, res3, res4

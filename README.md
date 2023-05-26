@@ -27,7 +27,7 @@ You can use the function `init(...)` to initialize the ADS with the given parame
 # The parameter gain allows to change the value used in measurements and calculations
 # The parameter rate allows to change the number of measurements that the ADS1115 should perform in one second.
 # The mode parameter allows you to change how the ADS performs its measurements.
-# default initialization with address 0x48, gain 2, rate 4 and mode False
+# default initialization with address = 0x48, gain = 2, rate = 4 and mode = False
 ADS1115.init(0x48, 1, 4, False)
 ```
 
@@ -103,6 +103,18 @@ To calculate the voltages of each channel, you can use the function `raw_to_v(..
 # Reads an arbitrary raw value (raw) either from the previously specified channel or from any other variable and converts it to voltages.
 # Standard call of the function without value
 ADS1115.raw_to_v()
+```
+
+## Read raw values from multiple channels
+To read the raw values from each channel, you can use the `readMulti(...)` function, which returns the raw value of the specified channels.
+```python
+# The readMulti function takes 2 parameter
+# readMulti(start, end)
+# start min = 0 | start max = 4
+# end min = 0 | end max = 4
+# Reads the specified channel (chan) based on the specified parameter (0 to 7)
+# standard call of the function with the values start = 0 and end = 1
+ADS1115.readMulti(0, 1)
 ```
 
 ## License
