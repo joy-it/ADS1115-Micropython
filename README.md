@@ -112,7 +112,7 @@ To read the raw values from each channel, you can use the `readMulti(...)` funct
 # readMulti(start, end)
 # start min = 0 | start max = 4
 # end min = 0 | end max = 4
-# Reads the specified channel (chan) based on the specified parameter (0 to 7)
+# Reads the specified channels (start, end) based on the specified parameters (0 to 4)
 # standard call of the function with the values start = 0 and end = 1
 ADS1115.readMulti(0, 1)
 ```
